@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:orientation="vertical" >
+ 
+     <TextView 
+         android:id="@+id/iptextview"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:textSize="20dip"
+         android:gravity="center_horizontal"
+         />
+     
+     <EditText 
+         android:id="@+id/sedittext"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:hint="请输入要发送的内容"
+         />
+     
+     <Button 
+         android:id="@+id/sendbutton"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="发送"
+         />
+     
+     <TextView
+         android:id="@+id/textview"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:textSize="15dip"
+          
+         />
+ 
+ </LinearLayout>
